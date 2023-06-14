@@ -65,7 +65,7 @@ const TelaPoliticos = ({ navigation }) => {
           >
             <List.Item
               title={item.nome}
-              description={item.siglaPartido}
+              description={`${item.siglaPartido}/${item.siglaUf}`}
               left={(props) => <Avatar.Image source={{ uri: item.urlFoto }} />}
             />
           </Pressable>

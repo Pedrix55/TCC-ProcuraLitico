@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Text, Image, StyleSheet, View, FlatList, ScrollView} from "react-native";
-import { List } from "react-native-paper";
+import { Image, StyleSheet, View, FlatList, ScrollView} from "react-native";
+import { List, Card, Text } from "react-native-paper";
 import { GASTOS_FAKE } from "../Utils/DataFake";
 import Loading from "../Loading/Loading";
 
@@ -78,9 +78,11 @@ const TelaPolitico = ({ route }) => {
             />
           </View>
           <View style={style.contentPrimary}>
-            <Text style={style.title}>Nome: {dadosPolitico.nome}</Text>
-            <Text style={style.description}>Partido: {dadosPolitico.siglaPartido}/{dadosPolitico.siglaUf  }</Text>
-            <Text style={style.description}>Contato: {dadosPolitico.email}</Text>
+            <Card.content>
+              <Text style={style.title} variant={dadosPolitico.nome}></Text>
+              <Text style={style.description} variant={`${dadosPolitico.siglaPartido}/${dadosPolitico.siglaUf}`}></Text>
+              <Text style={style.description} variant={`${dadosPolitico.email}`}></Text>
+            </Card.content>
           </View>
         </View>
         <ScrollView>
