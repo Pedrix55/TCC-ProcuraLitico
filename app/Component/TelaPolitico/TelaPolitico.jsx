@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Text, Image, StyleSheet, View, FlatList, ScrollView} from "react-native";
-import { List } from "react-native-paper";
+import { ActivityIndicator, List } from "react-native-paper";
 import { GASTOS_FAKE } from "../Utils/DataFake";
 import Loading from "../Loading/Loading";
 
@@ -38,6 +38,15 @@ const TelaPolitico = ({ route }) => {
   //     console.error(error);
   //   }
   // };
+
+  function periodo(mes, ano){
+    if(mes < 10){
+
+      return `${"0"+mes}/${ano}`
+    }else{
+      return `${+mes}/${ano}`
+    }
+  }
 
   useEffect(() => {
     //Utilizando de IIFE -> Immediately Invoked Function Expression
@@ -78,24 +87,21 @@ const TelaPolitico = ({ route }) => {
             />
           </View>
           <View style={style.contentPrimary}>
-
             <Text style={style.title}> {dadosPolitico.nome}</Text>
             <Text style={style.description}>Partido: {dadosPolitico.siglaPartido}</Text>
             <Text style={style.description}> {dadosPolitico.email}</Text>
-
           </View>
         </View>
         <ScrollView>
           {data?.map((despesa, i) => (
             <View stlye={style.contentSecondary} key={i}>
               <View style={style.caixasInform}>
-              <Text style={style.tipoDespesa}>{despesa.tipoDespesa}</Text>
-       
-              <View style={style.descriptionDespesa}>
-                <Text> 
-                {despesa.ano} / {despesa.mes} {" "}
-                </Text>
-                <Text style={style.valoresDespesa}>R${despesa.valorDocumento}</Text>
+                <Text style={style.tipoDespesa}>{despesa.tipoDespesa}</Text>
+                <View style={style.descriptionDespesa}>
+                  <Text>
+                    {periodo(despesa.mes,despesa.ano)}
+                  </Text>
+                  <Text style={style.valoresDespesa}>R${despesa.valorDocumento.toFixed(2)}</Text>
               </View>
            
               </View>
@@ -112,7 +118,6 @@ const TelaPolitico = ({ route }) => {
   }else{
     return (
       <View style={{ flex: 1 }}>
-        
         <View style={style.content}>
           <View >
             <Image
@@ -120,25 +125,14 @@ const TelaPolitico = ({ route }) => {
               source={{ uri: `${dadosPolitico.urlFoto}` }}
             />
           </View>
-
-    
      </View> 
-
-     
-  
-       
-
         <View style={{flex:1}}>
-            <Loading/>
+          <ActivityIndicator animating={true} color="green"/>
         </View>
-        
 
-      </View>
-
-      </View>
+         </View>
     )
-  }
- 
+  } 
 };
 const style = StyleSheet.create({
   image: {

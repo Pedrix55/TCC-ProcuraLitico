@@ -6,7 +6,6 @@ const Loading = () =>{
   return (
     <View style={{flex: 1, height: "100%",alingItems: "center", justifyContent: "center"}}>
       <ActivityIndicator animating={true} color="green"/>
-
     </View>
   )
 }
