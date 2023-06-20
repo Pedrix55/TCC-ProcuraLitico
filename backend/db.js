@@ -1,9 +1,9 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes, Model } = require("sequelize");
 
-//const dbSequelize = new Sequelize(process.env.DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, {
-//    dialect: process.env.DB_DIALECT, host: process.env.DB_HOST
-//});
-
-const dbSequelize = new Sequelize(process.env.DATABASE_URL);
+const dbSequelize = new Sequelize("aluno", "root", "mysql", {
+  //lembrse que os parâmetros é de acordo com o banco de dados.
+  dialect: "mysql",
+  host: "localhost",
+});
 
 module.exports = dbSequelize;

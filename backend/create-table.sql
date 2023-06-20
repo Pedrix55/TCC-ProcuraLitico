@@ -1,0 +1,6 @@
+CREATE TABLE usuario(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100),
+    senha VARCHAR(25)
+
+)
